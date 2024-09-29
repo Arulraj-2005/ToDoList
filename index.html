@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title> Todo app </title>
+    <style>
+        
+/* style.css */
+
+body {
+    background: #008b8b;
+    color:rgb(0, 139, 139);
+
+ 
+}
+
+.container {
+    width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #cccccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.one {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 10px;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+span {
+    font-size: 30px;
+}
+
+.button-55 {
+    align-self: center;
+    text-decoration-style: none;
+    background-color: #6f6d6d;    
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.button-55:hover {
+    background-color: #3e8e41;
+}
+
+.button-55:focus {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.edit-btn {
+    background-color: #76d2fc;
+}
+
+.delete-btn {
+    background-color: #feafa6;
+}
+
+.check-btn {
+    background-color: #838483;
+}
+
+.add-btn {
+    background-color: #8BC34A;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-btn:hover {
+    background-color: #008b8b;
+}
+.c-checkbox {
+    display: none;
+
+    &:checked + .c-formContainer {
+        .c-form {
+            width: 37.5em;
+        }
+
+        .c-form__toggle {
+            visibility: hidden;
+            opacity: 0;
+            transform: scale(0.7);
+        }
+
+        .c-form__input,
+        .c-form__buttonLabel {
+            transition: 0.2s 0.1s;
+            visibility: visible;
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    &:not(:checked),
+    &:checked {
+        + .c-formContainer .c-form__input:required:valid ~ .c-form__toggle::before {
+            content: 'Thank You! \1F60A';
+        }
+    }
+
+    &:not(:checked) + .c-formContainer {
+        .c-form__input:required:valid ~ .c-form__toggle {
+            pointer-events: none;
+            cursor: default;
+        }
+    }
+}
+
+.c-formContainer,
+.c-form,
+.c-form__toggle {
+    width: 20em;
+    height: 6.25em;
+}
+
+.c-formContainer {
+    position: relative;
+    font-weight: 700;
+}
+
+.c-form,
+.c-form__toggle {
+    position: absolute;
+    border-radius: 6.25em;
+    background-color:#ffffff;
+    transition: 0.2s;
+}
+
+
+.c-form {
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.625em;
+    box-sizing: border-box;
+    box-shadow: 0 0.125em 0.3125em rgba(#000000, 0.3);
+    display: flex;
+    justify-content: center;
+}
+
+.c-form__toggle {
+    color: #ff7b73;
+    top: 0;
+    cursor: pointer;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+        font-size: 1.75em;
+        content: attr(data-title);
+    }
+}
+
+.c-form__input,
+.c-form__button {
+    font: inherit;
+    border: 0;
+    outline: 0;
+    border-radius: 5em;
+    box-sizing: border-box;
+}
+
+.c-form__input,
+.c-form__buttonLabel {
+    font-size: 1.75em;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.7);
+    transition: 0s;
+}
+
+.c-form__input {
+    color: #ffcccc;
+    height: 100%;
+    width: 100%;
+    padding: 0 0.714em;
+
+    &::placeholder {
+        color: currentColor;
+    }
+
+    &:required:valid {
+        color: #ff7b73;
+
+        + .c-form__buttonLabel {
+            color: #ffffff;
+
+            &::before {
+                pointer-events: initial;
+            }
+        }
+    }
+}
+
+.c-form__buttonLabel {
+    color:#ffaea9;
+    height : 100%;
+    width : auto;
+    &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        cursor: pointer;
+    }
+}
+
+.c-form__button {
+    color: inherit;
+    padding: 0;
+    height: 100%;
+    width: 5em;
+    background-color: #ff7b73;
+}
+.button {
+  cursor: pointer;
+  position: relative;
+  padding: 10px 24px;
+  font-size: 18px;
+  color: rgba(179, 2, 185, 0.4);
+  border: 2px solid rgba(179, 2, 185, 0.4);
+  border-radius: 34px;
+  background-color: transparent;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: inherit;
+  scale: 0;
+  z-index: -1;
+  background-color:rgba(179, 2, 185, 0.4);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.button:hover::before {
+  scale: 3;
+}
+
+.button:hover {
+  color: #f8f5f5;
+  scale: 1.1;
+  box-shadow: 0 0px 20px rgba(179, 2, 185, 0.4);
+}
+
+.button:active {
+  scale: 1;
+}
+
+    </style>
+</head>
+<body>
+        <div class="container">
+            <h1>TODOS</h1>
+            <ul class="one">
+                {% for todo in todos %}
+                <li>
+                    <input type="checkbox" name="done" {% if todo['done'] %} checked {%endif%} onchange="this.form.submit()">
+                    <span {%if todo['done'] %} style="text-decoration: line-through" {%endif%}>{{ todo['task']}}</span>
+                     <a href="{{url_for('check', index=loop.index0)}}" class="button-55 check-btn">CHECK</a>
+                    <a href="{{url_for('edit', index=loop.index0)}}" class="button-55 edit-btn">EDIT</a>
+                    <a href="{{url_for('delete', index=loop.index0)}}" class="button-55 delete-btn">DELETE</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <form action="{{url_for('add')}}" method="post">
+                <input type="text" name="todo">
+                <button class="button">
+                    Add
+                  </button>
+            </form>
+            </div>
+    </center>
+</body>
+</html>
